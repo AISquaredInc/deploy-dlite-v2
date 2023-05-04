@@ -52,7 +52,7 @@ def deploy_model(
         # Retrieve the json
         try:
             data = request.get_json()
-            logger.info('data successfully parsed')
+            logger.info('data successfully parsed from request')
         except Exception as e:
             logger.exception(f'Error while parsing data from request: {e}')
             return Response(
@@ -63,7 +63,7 @@ def deploy_model(
         # Retrieve the prompt
         try:
             prompt = data['prompt']
-            logger.info('prompt parsed from response data')
+            logger.info('prompt parsed from request data')
         except Exception as e:
             logger.exception(f'Error while retrieving prompt: {e}')
             return Response(
@@ -83,7 +83,7 @@ def deploy_model(
         
         try:
             model_response = model(prompt)
-            logger.info('model response to prompt successfully retrieved')
+            logger.info('model response to prompt successfully calculated')
             model_response = {
                 'choices' : [{'text' : model_response}]
             }
